@@ -10,7 +10,7 @@ R1="$sample"_R1_001.fastq.gz
 R2="$sample"_R2_001.fastq.gz
 
 #baseDir=/pi/zhiping.weng-umw/data/hattonc/PRODMAT_Corvera/RNASeq/PRODMAT/STAR/
-baseDir=/zata/zippy/hattonc/practice/ 
+baseDir=/zata/zippy/hattonc/PRODMAT/ 
 fastqDir=/zata/data/zlab/projects/PRODMAT/
 #fastqDir=/zata/zippy/hattonc/test_fastq/
 referenceDir=/zata/zippy/hattonc/Genomes/hg38/RSEM/STAR/
