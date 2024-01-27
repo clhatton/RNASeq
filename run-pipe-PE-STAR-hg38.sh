@@ -1,7 +1,7 @@
 #! /bin/bash
 set -e
 
-source ~/miniconda3/etc/profile.d/conda.sh
+source /zata/zippy/hattonc/miniconda3/etc/profile.d/conda.sh
 conda activate rnaseq
 
 #sample=$1
