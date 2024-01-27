@@ -2,7 +2,6 @@
 set -e
 
 source ~/miniconda3/etc/profile.d/conda.sh
-#conda env create -n rnaseq --file rnaseq.yml
 conda activate rnaseq
 
 sample=$1
