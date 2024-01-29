@@ -9,6 +9,8 @@ sample=$1
 R1="$sample"_R1_001.fastq.gz
 R2="$sample"_R2_001.fastq.gz
 
+nCores=24
+
 #baseDir=/pi/zhiping.weng-umw/data/hattonc/PRODMAT_Corvera/RNASeq/PRODMAT/STAR/
 baseDir=/zata/zippy/hattonc/PRODMAT/ 
 fastqDir=/zata/data/zlab/projects/PRODMAT/
@@ -33,7 +35,7 @@ cp $fastqDir$R2 ./
 fastqc $R1
 fastqc $R2
 
-trimmomatic PE -threads 16 -trimlog $sample.trim.log -summary $sample.trim.summary \
+trimmomatic PE -threads $nCores -trimlog $sample.trim.log -summary $sample.trim.summary \
 $R1 $R2 $sample.R1.P.fastq.gz $sample.R1.U.fastq.gz $sample.R2.P.fastq.gz $sample.R2.U.fastq.gz \
 ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 
@@ -50,17 +52,17 @@ rsem-calculate-expression \
 --paired-end \
 --star \
 --star-output-genome-bam \
--p 16 \
+-p $nCores \
 $sample.R1.P.fastq \
 $sample.R2.P.fastq \
 $tempDir/STAR/RSEM \
 $sample
 
-samtools sort -@ 16 $sample.STAR.genome.bam -o $sample.STAR.genome.sorted.bam
-samtools sort -@ 16 $sample.transcript.bam -o $sample.transcript.sorted.bam
+samtools sort -@ $nCores $sample.STAR.genome.bam -o $sample.STAR.genome.sorted.bam
+samtools sort -@ $nCores $sample.transcript.bam -o $sample.transcript.sorted.bam
 
-samtools index -@ 16 $sample.STAR.genome.sorted.bam
-samtools index -@ 16 $sample.transcript.sorted.bam
+samtools index -@ $nCores $sample.STAR.genome.sorted.bam
+samtools index -@ $nCores $sample.transcript.sorted.bam
 
 cp $sample.genes.results $genesDir
 cp $sample.isoforms.results $isoformsDir
