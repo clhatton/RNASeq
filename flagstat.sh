@@ -22,8 +22,8 @@ rm -rf $tempDir; mkdir -p $tempDir; cd $tempDir
 cp $bamDir$genome ./
 cp $bamDir$transcript ./
 
-samtools flagstat @ $nCores $genome > $sample.genome.maplog.txt
-samtools flagstat @ $nCores $transcript > $sample.transcript.maplog.txt
+samtools flagstat -@ $nCores $genome > $sample.genome.maplog.txt
+samtools flagstat -@ $nCores $transcript > $sample.transcript.maplog.txt
 
 cp $sample.genome.maplog.txt $genomeDir
 cp $sample.transcript.maplog.txt $transcriptDir
