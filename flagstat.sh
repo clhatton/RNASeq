@@ -19,8 +19,8 @@ transcriptDir=/data/rusers/hattonc/PRODMAT/Mapping_Logs_Transcript
 tempDir=/tmp/hattonc/$sample
 
 rm -rf $tempDir; mkdir -p $tempDir; cd $tempDir
-cp /$bamDir/$genome /$tempDir
-cp /$bamDir/$transcript /$tempDir
+cp $bamDir$genome ./
+cp $bamDir$transcript ./
 
 samtools flagstat @ $nCores $genome > $sample.genome.maplog.txt
 samtools flagstat @ $nCores $transcript > $sample.transcript.maplog.txt
