@@ -13,7 +13,7 @@ nCores=24
 
 baseDir=/data/rusers/hattonc/PRODMAT/
 bamDir=/data/rusers/hattonc/PRODMAT/BAMs
-genomeDir=/data/rusuers/hattonc/PRODMAT/Mapping_Logs_Genome
+genomeDir=/data/rusers/hattonc/PRODMAT/Mapping_Logs_Genome
 transcriptDir=/data/rusers/hattonc/PRODMAT/Mapping_Logs_Transcript
 
 tempDir=/tmp/hattonc/$sample
