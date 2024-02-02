@@ -12,7 +12,7 @@ transcript=$sample.transcript.sorted.bam
 nCores=24
 
 baseDir=/data/rusers/hattonc/PRODMAT/
-bamDir=/data/rusers/hattonc/PRODMAT/BAMs
+bamDir=/data/rusers/hattonc/PRODMAT/BAMs/
 genomeDir=/data/rusers/hattonc/PRODMAT/Mapping_Logs_Genome
 transcriptDir=/data/rusers/hattonc/PRODMAT/Mapping_Logs_Transcript
 
