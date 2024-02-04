@@ -85,6 +85,7 @@ cp $sample.R2.P_fastqc.html $fastqc_trimmedDir
 cp $sample.trim.summary $LogsDir
 cp "$sample"_R1_001_fastqc.zip $LogsDir
 cp "$sample"_R2_001_fastqc.zip $LogsDir
+cp $sample.log $LogsDir
 
 if [ -e $sample.R1.U.fastq.gz ];
 then 
