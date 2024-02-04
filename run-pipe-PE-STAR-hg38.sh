@@ -4,17 +4,17 @@ set -e
 source /zata/zippy/hattonc/miniconda3/etc/profile.d/conda.sh
 conda activate rnaseq
 
-sample=$1
-#sample=test
+#sample=$1
+sample=test
 R1="$sample"_R1_001.fastq.gz
 R2="$sample"_R2_001.fastq.gz
 
 nCores=24
 
 #baseDir=/pi/zhiping.weng-umw/data/hattonc/PRODMAT_Corvera/RNASeq/PRODMAT/STAR/
-baseDir=/data/rusers/hattonc/PRODMAT/ 
-fastqDir=/zata/data/zlab/projects/PRODMAT/
-#fastqDir=/zata/zippy/hattonc/test_fastq/
+baseDir=/data/rusers/hattonc/PRODMAT/test/ 
+#fastqDir=/zata/data/zlab/projects/PRODMAT/
+fastqDir=/data/rusers/hattonc/test_fastq/
 referenceDir=/zata/zippy/hattonc/Genomes/hg38/RSEM/STAR/
 fastqc_rawDir=$baseDir/FastQC_Raw
 fastqc_trimmedDir=$baseDir/FastQC_Trimmed
@@ -22,8 +22,7 @@ bamDir=$baseDir/BAMs
 genesDir=$baseDir/Genes
 isoformsDir=$baseDir/Isoforms
 unpairedDir=$baseDir/Unpaired_Trimmed
-trimlogDir=$baseDir/Trimming_Logs
-trimsumDir=$baseDir/Trimming_Summary
+LogsDir=$baseDir/Logs
 
 tempDir=/tmp/hattonc/$sample
 
@@ -64,6 +63,15 @@ samtools sort -@ $nCores $sample.transcript.bam -o $sample.transcript.sorted.bam
 samtools index -@ $nCores $sample.STAR.genome.sorted.bam
 samtools index -@ $nCores $sample.transcript.sorted.bam
 
+genome=$sample.STAR.genome.sorted.bam
+transcript=$sample.transcript.sorted.bam
+
+samtools flagstat -@ $nCores $genome > $sample.genome.maplog.txt
+samtools flagstat -@ $nCores $transcript > $sample.transcript.maplog.txt
+
+cp $sample.genome.maplog.txt $LogsDir
+cp $sample.transcript.maplog.txt $LogsDir
+
 cp $sample.genes.results $genesDir
 cp $sample.isoforms.results $isoformsDir
 cp $sample.STAR.genome.sorted.bam $bamDir
@@ -74,8 +82,9 @@ cp "$sample"_R1_001_fastqc.html $fastqc_rawDir
 cp "$sample"_R2_001_fastqc.html $fastqc_rawDir
 cp $sample.R1.P_fastqc.html $fastqc_trimmedDir
 cp $sample.R2.P_fastqc.html $fastqc_trimmedDir
-cp $sample.trim.log $trimlogDir
-cp $sample.trim.summary $trimsumDir
+cp $sample.trim.summary $LogsDir
+cp "$sample"_R1_001_fastqc.zip $LogsDir
+cp "$sample"_R2_001_fastqc.zip $LogsDir
 
 if [ -e $sample.R1.U.fastq.gz ];
 then 
@@ -88,7 +97,8 @@ fi
 
 
 
-cd /zata/zippy/hattonc
+cd /data/rusers/hattonc/PRODMAT/test/temp
+cp $tempDir ./
 
 rm -rf $tempDir
 
