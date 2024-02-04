@@ -98,7 +98,7 @@ fi
 
 
 cd /data/rusers/hattonc/PRODMAT/test/temp
-cp $tempDir ./
+cp -rv $tempDir ./
 
 rm -rf $tempDir
 
