@@ -4,17 +4,17 @@ set -e
 source /zata/zippy/hattonc/miniconda3/etc/profile.d/conda.sh
 conda activate rnaseq
 
-#sample=$1
-sample=test
+sample=$1
+#sample=test
 R1="$sample"_R1_001.fastq.gz
 R2="$sample"_R2_001.fastq.gz
 
 nCores=24
 
 #baseDir=/pi/zhiping.weng-umw/data/hattonc/PRODMAT_Corvera/RNASeq/PRODMAT/STAR/
-baseDir=/data/rusers/hattonc/PRODMAT/test/ 
-#fastqDir=/zata/data/zlab/projects/PRODMAT/
-fastqDir=/data/rusers/hattonc/test_fastq/
+baseDir=/data/rusers/hattonc/PRODMAT/
+fastqDir=/zata/data/zlab/projects/PRODMAT/
+#fastqDir=/data/rusers/hattonc/test_fastq/
 referenceDir=/zata/zippy/hattonc/Genomes/hg38/RSEM/STAR/
 fastqc_rawDir=$baseDir/FastQC_Raw
 fastqc_trimmedDir=$baseDir/FastQC_Trimmed
@@ -98,8 +98,8 @@ fi
 
 
 
-cd /data/rusers/hattonc/PRODMAT/test/temp
-cp -rv $tempDir ./
+cd /data/rusers/hattonc/PRODMAT
+
 
 rm -rf $tempDir
 
