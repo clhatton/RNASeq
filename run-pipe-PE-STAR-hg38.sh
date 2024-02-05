@@ -22,6 +22,7 @@ bamDir=$baseDir/BAMs
 genesDir=$baseDir/Genes
 isoformsDir=$baseDir/Isoforms
 unpairedDir=$baseDir/Unpaired_Trimmed
+alignDir=$baseDir/Aligned_Log
 LogsDir=$baseDir/Logs
 
 tempDir=/tmp/hattonc/$sample
@@ -85,7 +86,7 @@ cp $sample.R2.P_fastqc.html $fastqc_trimmedDir
 cp $sample.trim.summary $LogsDir
 cp "$sample"_R1_001_fastqc.zip $LogsDir
 cp "$sample"_R2_001_fastqc.zip $LogsDir
-cp $sample.log $LogsDir
+cp $sample.log $alignDir
 
 if [ -e $sample.R1.U.fastq.gz ];
 then 
