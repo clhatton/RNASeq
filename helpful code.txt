@@ -1,0 +1,6 @@
+
+To see full job name: 
+squeue --format="%.18i %.9P %.30j %.8u %.8T %.10M %.9l %.6D %R" --me
+
+To grep out jobs that didn't finish in folder:
+cat ../PRODMAT_samples.txt | cut -f1 | grep -wvFf <(ls ./Logs/ | sed 's/.trim.summary//g') -
