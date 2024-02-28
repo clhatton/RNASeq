@@ -1,5 +1,3 @@
-Not ready yet! 
-
 #! /bin/bash
 set -e
 
@@ -54,34 +52,25 @@ gunzip $sample.R2.P.fastq.gz
 
 rsem-calculate-expression \
 --paired-end \
---star \
---star-output-genome-bam \
+--hisat2-hca \
 -p $nCores \
 $sample.R1.P.fastq \
 $sample.R2.P.fastq \
-$tempDir/STAR/RSEM \
+$tempDir/HISAT2/RSEM \
 $sample
 
-samtools sort -@ $nCores $sample.STAR.genome.bam -o $sample.STAR.genome.sorted.bam
 samtools sort -@ $nCores $sample.transcript.bam -o $sample.transcript.sorted.bam
-
-samtools index -@ $nCores $sample.STAR.genome.sorted.bam
 samtools index -@ $nCores $sample.transcript.sorted.bam
 
-genome=$sample.STAR.genome.sorted.bam
 transcript=$sample.transcript.sorted.bam
 
-samtools flagstat -@ $nCores $genome > $sample.genome.maplog.txt
 samtools flagstat -@ $nCores $transcript > $sample.transcript.maplog.txt
 
-cp $sample.genome.maplog.txt $LogsDir
 cp $sample.transcript.maplog.txt $LogsDir
 
 cp $sample.genes.results $genesDir
 cp $sample.isoforms.results $isoformsDir
-cp $sample.STAR.genome.sorted.bam $bamDir
 cp $sample.transcript.sorted.bam $bamDir
-cp $sample.STAR.genome.sorted.bam.bai $bamDir
 cp $sample.transcript.sorted.bam.bai $bamDir
 cp "$sample"_R1_001_fastqc.html $fastqc_rawDir
 cp "$sample"_R2_001_fastqc.html $fastqc_rawDir
