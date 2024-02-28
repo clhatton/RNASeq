@@ -23,6 +23,8 @@ tempDir=/home/courtney.hatton-umw/tempFiles/$sample
 
 
 rm -rf $tempDir; mkdir -p $tempDir; cd $tempDir
+trap 'rm -rf -- "$tempDir"' EXIT 
+
 cp $fastqDir$sample.fastq.gz ./
 
 fastqc $sample.fastq.gz

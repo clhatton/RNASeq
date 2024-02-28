@@ -29,6 +29,8 @@ tempDir=/tmp/hattonc/$sample
 
 
 rm -rf $tempDir; mkdir -p $tempDir; cd $tempDir
+trap 'rm -rf -- "$tempDir"' EXIT 
+
 cp $fastqDir$R1 ./
 cp $fastqDir$R2 ./
 

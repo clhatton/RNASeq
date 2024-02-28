@@ -14,10 +14,10 @@ R2="$sample"_R2_001.fastq.gz
 nCores=24
 
 #baseDir=/pi/zhiping.weng-umw/data/hattonc/PRODMAT_Corvera/RNASeq/PRODMAT/STAR/
-baseDir=/data/rusers/hattonc/PRODMAT/STAR/
+baseDir=/data/rusers/hattonc/PRODMAT/HISAT2/
 fastqDir=/zata/data/zlab/projects/PRODMAT/
 #fastqDir=/data/rusers/hattonc/test_fastq/
-referenceDir=/zata/zippy/hattonc/Genomes/hg38/RSEM/STAR/
+referenceDir=/zata/zippy/hattonc/Genomes/hg38/RSEM/HISAT2/
 fastqc_rawDir=$baseDir/FastQC_Raw
 fastqc_trimmedDir=$baseDir/FastQC_Trimmed
 bamDir=$baseDir/BAMs
@@ -31,6 +31,8 @@ tempDir=/tmp/hattonc/$sample
 
 
 rm -rf $tempDir; mkdir -p $tempDir; cd $tempDir
+trap 'rm -rf -- "$tempDir"' EXIT 
+
 cp $fastqDir$R1 ./
 cp $fastqDir$R2 ./
 
