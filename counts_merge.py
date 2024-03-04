@@ -10,7 +10,7 @@ base_path = '/data/rusers/hattonc/PRODMAT/HISAT2/Counts_txt/'
 for index, row in file.iterrows():
     if 'P001-ABD-C' in row[0]:
         file_path = f'{base_path}{row[0]}_counts.txt'
-        new_df = pd.read_csv(file_path, sep="\", header=0)
+        new_df = pd.read_csv(file_path, sep="\t", header=0)
         print(new_df.head())
         print(df_C.head())
         #df_C = pd.merge(df_C, new_df, on='Gene')
