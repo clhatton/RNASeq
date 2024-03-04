@@ -15,7 +15,7 @@ for index, row in file.iterrows():
     elif 'M' in row[0]:
         file_path = f'{base_path}{row[0]}_counts.txt'
         new_df = pd.read_csv(file_path, sep=" ")
-        df_M = pd.merge(df_M, new_df on= 'Gene')
+        df_M = pd.merge(df_M, new_df, on= 'Gene')
     elif 'F' in row[0]:
         file_path = f'{base_path}{row[0]}_counts.txt'
         new_df = pd.read_csv(file_path, sep=" ")
