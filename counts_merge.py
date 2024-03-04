@@ -9,15 +9,15 @@ base_path = '/data/rusers/hattonc/PRODMAT/HISAT2/Counts_txt/'
 
 for index, row in file.iterrows():
     if 'C' in row[0]:
-        file_path = f'{base_path}{row[0]}_count.txt'
+        file_path = f'{base_path}{row[0]}_counts.txt'
         new_df = pd.read_csv(file_path, sep=" ")
         df_C = pd.merge(df_C, new_df, on='Gene', how='inner')
     elif 'M' in row[0]:
-        file_path = f'{base_path}{row[0]}_count.txt'
+        file_path = f'{base_path}{row[0]}_counts.txt'
         new_df = pd.read_csv(file_path, sep=" ")
         df_M = pd.merge(df_M, new_df, on='Gene', how='inner')
     elif 'F' in row[0]:
-        file_path = f'{base_path}{row[0]}_count.txt'
+        file_path = f'{base_path}{row[0]}_counts.txt'
         new_df = pd.read_csv(file_path, sep=" ")
         df_F = pd.merge(df_F, new_df, on='Gene', how='inner')
 
