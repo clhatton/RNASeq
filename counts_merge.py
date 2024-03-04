@@ -11,15 +11,15 @@ for index, row in file.iterrows():
     if 'C' in row[0]:
         file_path = f'{base_path}{row[0]}_counts.txt'
         new_df = pd.read_csv(file_path, sep=" ")
-        df_C = pd.merge(df_C, new_df, on= index)
+        df_C = pd.merge(df_C, new_df)
     elif 'M' in row[0]:
         file_path = f'{base_path}{row[0]}_counts.txt'
         new_df = pd.read_csv(file_path, sep=" ")
-        df_M = pd.merge(df_M, new_df, on= index)
+        df_M = pd.merge(df_M, new_df)
     elif 'F' in row[0]:
         file_path = f'{base_path}{row[0]}_counts.txt'
         new_df = pd.read_csv(file_path, sep=" ")
-        df_F = pd.merge(df_F, new_df, on= index)
+        df_F = pd.merge(df_F, new_df)
 
 df_C.to_csv('HISAT2_C.csv', index=False)
 df_M.to_csv('HISAT2_M.csv', index=False)
