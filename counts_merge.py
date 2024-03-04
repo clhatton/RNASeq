@@ -2,7 +2,7 @@
 import pandas as pd
 
 
-alignment = HISAT2
+alignment = 'HISAT2'
 
 file = pd.read_csv('PRODMAT_samples.txt', header=None)
 df_C = pd.read_csv('blank_Genes.txt', header=True)
