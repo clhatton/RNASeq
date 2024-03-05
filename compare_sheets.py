@@ -19,7 +19,7 @@ for index in changed_indices:
     if abs(df1.at[row, col] - df2.at[row, col]) >= 5:
         x= x+1
         if gene != row:
-            genes = genes.append(row)
+            genes.extend(row)
             gene = row
         print(f"Difference at ({row}, {col}):")
         print(f"  HISAT2: {df1.at[row, col]}")
