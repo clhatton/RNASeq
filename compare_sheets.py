@@ -16,7 +16,7 @@ y=0
 z=0
 for index in changed_indices:
     row, col = index
-    if abs(df1.at[row, col] - df2.at[row, col]) >= 5:
+    if abs(df1.at[row, col] - df2.at[row, col]) >= 100:
         x= x+1
         print(f"Difference at ({row}, {col}):")
         print(f"  HISAT2: {df1.at[row, col]}")
@@ -28,12 +28,12 @@ for index in changed_indices:
         print(f"  HISAT2: {df1.at[row, col]}")
         print(f"  STAR: {df2.at[row, col]}")
         print()
-    elif abs(df1.at[row, col] - df2.at[row, col]) >= 100:
+    elif abs(df1.at[row, col] - df2.at[row, col]) >= 5:
         z= z+1
         print(f"Difference at ({row}, {col}):")
         print(f"  HISAT2: {df1.at[row, col]}")
         print(f"  STAR: {df2.at[row, col]}")
         print()
-    print(f"Difference of 5 or Greater is {x}")
-    print(f"Difference of 50 or Greater is {y}")
-    print(f"Difference of 100 or Greater is {z}")
+print(f"Difference of 5 or Greater is {z}")
+print(f"Difference of 50 or Greater is {y}")
+print(f"Difference of 100 or Greater is {x}")
