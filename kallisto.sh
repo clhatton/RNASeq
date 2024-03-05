@@ -52,7 +52,7 @@ gunzip $sample.R2.P.fastq.gz
 conda deactivate 
 conda activate kallisto
 
-kallisto quant -i hg38_kallisto.idx -o kallisto_output -b 100 $sample.R1.P.fastq $sample.R2.P.fastq
+kallisto quant -i ./Kallisto/hg38_kallisto.idx -o kallisto_output -b 100 $sample.R1.P.fastq $sample.R2.P.fastq
 
 conda deactivate 
 conda activate rnaseq
