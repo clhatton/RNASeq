@@ -14,7 +14,7 @@ changed_indices = differences[differences].index
 for index in changed_indices:
     row, col = index
     if abs(df1.at[row, col] - df2.at[row, col]) >= 5:
-        print(f"Difference at ({row[0]}, {col}):")
+        print(f"Difference at ({row}, {col}):")
         print(f"  HISAT2: {df1.at[row, col]}")
         print(f"  STAR: {df2.at[row, col]}")
         print()
