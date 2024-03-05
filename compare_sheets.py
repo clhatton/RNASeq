@@ -8,10 +8,11 @@ df2 = pd.read_csv('STAR_C.csv')
 differences = (df1 != df2).stack()
 
 # Get the row and column indices where differences occur
-changed_rows, changed_columns = differences[differences].index.unstack()
+changed_indices = differences[differences].index
 
 # Display the differences
-for row, col in zip(changed_rows, changed_columns):
+for index in changed_indices:
+    row, col = index
     print(f"Difference at ({row}, {col}):")
     print(f"  Sheet 1: {df1.at[row, col]}")
     print(f"  Sheet 2: {df2.at[row, col]}")
