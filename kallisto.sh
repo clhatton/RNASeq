@@ -2,7 +2,7 @@
 set -e
 
 source /zata/zippy/hattonc/miniconda3/etc/profile.d/conda.sh
-conda activate kallisto
+conda activate rnaseq
 
 #sample=$1
 sample=test
@@ -49,7 +49,13 @@ cp -r $referenceDir $tempDir
 gunzip $sample.R1.P.fastq.gz 
 gunzip $sample.R2.P.fastq.gz 
 
+conda deactivate rnaseq
+conda activate kallisto
+
 kallisto quant -i hg38_kallisto.idx -o kallisto_output -b 100 $sample.R1.P.fastq $sample.R2.P.fastq
+
+conda deactivate kallisto
+conda activate rnaseq
 
 cp $tempDir /data/rusers/hattonc/K_testing
 
