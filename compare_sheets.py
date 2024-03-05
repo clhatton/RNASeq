@@ -11,10 +11,19 @@ differences = (df1 != df2).stack()
 changed_indices = differences[differences].index
 
 # Display the differences
+x=0
+gene = 0
+genes = []
 for index in changed_indices:
     row, col = index
     if abs(df1.at[row, col] - df2.at[row, col]) >= 5:
+        x= x+1
+        if gene != row:
+            genes.append(row)
+            gene = row
         print(f"Difference at ({row}, {col}):")
         print(f"  HISAT2: {df1.at[row, col]}")
         print(f"  STAR: {df2.at[row, col]}")
         print()
+    print(x)
+    print(genes)
