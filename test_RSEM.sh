@@ -30,16 +30,16 @@ cp $fastqDir$R2 ./
 
 cp -r $referenceDir $tempDir
 
-gunzip $sample.R1.fastq.gz 
-gunzip $sample.R2.fastq.gz 
+gunzip $R1
+gunzip $R2
 
 rsem-calculate-expression \
 --paired-end \
 --star \
 --star-output-genome-bam \
 -p $nCores \
-$sample.R1.P.fastq \
-$sample.R2.P.fastq \
+"$sample"_R1_001.fastq \
+"$sample"_R2_001.fastq \
 $tempDir/STAR/RSEM \
 $sample
 
