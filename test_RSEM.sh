@@ -30,8 +30,8 @@ cp $fastqDir$R2 ./
 
 cp -r $referenceDir $tempDir
 
-gunzip $sample.R1.P.fastq.gz 
-gunzip $sample.R2.P.fastq.gz 
+gunzip $sample.R1.fastq.gz 
+gunzip $sample.R2.fastq.gz 
 
 rsem-calculate-expression \
 --paired-end \
